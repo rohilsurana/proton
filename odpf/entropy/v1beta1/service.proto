@@ -35,7 +35,7 @@ service ResourceService {
 
   rpc UpdateResource(UpdateResourceRequest) returns (UpdateResourceResponse) {
     option (google.api.http) = {
-      patch: "/v1beta1/resources/{resource.urn}"
+      patch: "/v1beta1/resources/{urn}"
       body: "resource"
     };
   }
@@ -85,8 +85,8 @@ message CreateResourceResponse {
 }
 
 message UpdateResourceRequest {
-  Resource resource = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  string urn = 1;
+  google.protobuf.Value configs = 2;
 }
 
 message UpdateResourceResponse {
